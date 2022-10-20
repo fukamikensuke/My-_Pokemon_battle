@@ -17,15 +17,15 @@ def my_get_parameta():
         pokemon.append(row[0])
     conn.close
     pokemon_data = []
-    output_data = []
-    j = 0
     for i in pokemon:
+        print(i)
+        print((main.df[main.df["名前(フォルム)"] == i]).values[0])
         pokemon_data.append((main.df[main.df["名前(フォルム)"] == i]).values[0])
     return pokemon_data
 
 
 def my_pokemon_regsist(pokemondata, endever):
-    my_pokemon_data = pokemon_parameta(pokemondata, endever)
+    my_pokemon_data = pokemon_set_parameta(pokemondata, endever)
     conn = sqlite3.connect(dbname)
     c = conn.cursor()
     sql = "insert into My_pokemon_parameta(name,main_type,sub_type,hp,attack,deffence,sp_attack,sp_deffence,speed)values(?,?,?,?,?,?,?,?,?)"

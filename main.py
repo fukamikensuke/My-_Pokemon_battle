@@ -57,19 +57,20 @@ async def regist(
 @app.post("/my_regist/parameta")
 def my_prameta(
     p1: list = Form(),
-    p2: list = Form(),
-    p3: list = Form(),
-    p4: list = Form(),
-    p5: list = Form(),
-    p6: list = Form(),
+    # p2: list = Form(),
+    # p3: list = Form(),
+    # p4: list = Form(),
+    # p5: list = Form(),
+    # p6: list = Form(),
 ):
+
     pokemon_data = parameta.my_get_parameta()
-    parameta.my_pokemon_regist(pokemon_data[0], p1)
-    parameta.my_pokemon_regist(pokemon_data[1], p2)
-    parameta.my_pokemon_regist(pokemon_data[2], p3)
-    parameta.my_pokemon_regist(pokemon_data[3], p4)
-    parameta.my_pokemon_regist(pokemon_data[4], p5)
-    parameta.my_pokemon_regist(pokemon_data[5], p6)
+    parameta.my_pokemon_regsist(pokemon_data[0], p1)
+    # parameta.my_pokemon_regist(pokemon_data[1], p2)
+    # parameta.my_pokemon_regist(pokemon_data[2], p3)
+    # parameta.my_pokemon_regist(pokemon_data[3], p4)
+    # parameta.my_pokemon_regist(pokemon_data[4], p5)
+    # parameta.my_pokemon_regist(pokemon_data[5], p6)
     return {"message": "Ok"}
 
 
