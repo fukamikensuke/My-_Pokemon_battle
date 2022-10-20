@@ -1,4 +1,5 @@
 from pickletools import int4
+from ssl import PROTOCOL_SSLv23
 from threading import currentThread
 from tkinter import INSERT
 import pandas as pd
@@ -63,25 +64,12 @@ def my_prameta(
     p6: list = Form(),
 ):
     pokemon_data = parameta.my_get_parameta()
-    my_pokemon_data = parameta.pokemon_parameta(pokemon_data[0], p1)
-    print(pokemon_data[0])
-    conn = sqlite3.connect(dbname)
-    c = conn.cursor()
-    sql = "insert into My_pokemon_parameta(name,main_type,sub_type,hp,attack,deffence,sp_attack,sp_deffence,speed)values(?,?,?,?,?,?,?,?,?)"
-    data = (
-        my_pokemon_data[0],
-        my_pokemon_data[1],
-        my_pokemon_data[2],
-        int(my_pokemon_data[3]),
-        int(my_pokemon_data[4]),
-        int(my_pokemon_data[5]),
-        int(my_pokemon_data[6]),
-        int(my_pokemon_data[7]),
-        int(my_pokemon_data[8]),
-    )
-    c.execute(sql, data)
-    conn.commit()
-    conn.close()
+    parameta.my_pokemon_regist(pokemon_data[0], p1)
+    parameta.my_pokemon_regist(pokemon_data[1], p2)
+    parameta.my_pokemon_regist(pokemon_data[2], p3)
+    parameta.my_pokemon_regist(pokemon_data[3], p4)
+    parameta.my_pokemon_regist(pokemon_data[4], p5)
+    parameta.my_pokemon_regist(pokemon_data[5], p6)
     return {"message": "Ok"}
 
 
