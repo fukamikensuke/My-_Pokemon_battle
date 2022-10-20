@@ -70,7 +70,7 @@ def my_prameta(
     parameta.my_pokemon_regist(pokemon_data[3], p4)
     parameta.my_pokemon_regist(pokemon_data[4], p5)
     parameta.my_pokemon_regist(pokemon_data[5], p6)
-    return {"message": "Ok"}
+    return {"message": "Okk"}
 
 
 # for i in input_name_list:
