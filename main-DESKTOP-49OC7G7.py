@@ -14,19 +14,13 @@ app = FastAPI()
 
 db_create.create_db()
 
-df = pd.read_csv("ポケモンデータシート - ポケモンデータシート .csv")
+df  = pd.read_csv("ポケモンデータシート - ポケモンデータシート .csv")
+skill_df = pd.read_csv("技データリスト.csv")
 df = df.drop(["ぜんこくNo.", "名前", "英語名"], axis=1)
-pokemon_name = list(map(str, input().split()))
-for i in pokemon_name:
-    party.my_regist(i)
-pokemon_data = parameta.my_get_parameta()
-pokemon_endever = [list(map(int, input().split())) for i in range(6)]
+skill_df = skill_df.drop(["ダイマックス","直接","守る","対象","説明"],axis=1)
+a = skill_df.values
 
-print(pokemon_data)
-for i in range(0, 6):
-    parameta.my_pokemon_regsist(pokemon_data[i], pokemon_endever[i])
-
-
+print(a[0])
 @app.get("/")
 def root():
     a = (df[df["名前(フォルム)"] == "アルセウス"]).values[0]
@@ -72,33 +66,5 @@ def my_prameta(
     return {"message": "Ok"}
 
 
-@app.post("/my_regist/skill")
-def my_prameta(
-    p1: list = Form(),
-    # p2: list = Form(),
-    # p3: list = Form(),
-    # p4: list = Form(),
-    # p5: list = Form(),
-    # p6: list = Form(),
-):
-
-    pokemon_data = parameta.my_get_parameta()
-    parameta.my_pokemon_regsist(pokemon_data[0], p1)
-    # parameta.my_pokemon_regist(pokemon_data[1], p2)
-    # parameta.my_pokemon_regist(pokemon_data[2], p3)
-    # parameta.my_pokemon_regist(pokemon_data[3], p4)
-    # parameta.my_pokemon_regist(pokemon_data[4], p5)
-    # parameta.my_pokemon_regist(pokemon_data[5], p6)
-    return {"message": "Ok"}
-
-
 # for i in input_name_list:
 #     df[df["名前"] == i]
-
-# エースバーン ナエトル ヒコザル ハヤシガメ アルセウス リザードン
-# 100 20 40 50 60 90
-# 100 20 40 50 60 90
-# 100 20 40 50 60 90
-# 100 20 40 50 60 90
-# 100 20 40 50 60 90
-# 100 20 40 50 60 90
