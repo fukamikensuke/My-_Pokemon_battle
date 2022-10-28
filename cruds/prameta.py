@@ -71,11 +71,18 @@ def pokemon_set_parameta(pokemon_data, endevor: list):
     return pokemon_para_data
 
 
-def skill_set(skill_list, pokemon_id):
+def skill_set(skill_list):
     conn = sqlite3.connect(dbname)
     c = conn.cursor()
-    data = (pokemon_id, skill_list[0], skill_list[1], skill_list[2], skill_list[3])
-    sql = "insert into My_pokemon_parameta(id,skill_1,skill_2,skill_3,skill_4)values(?,?,?,?,?)"
+    data = (
+        int(skill_list[0]),
+        skill_list[1],
+        skill_list[2],
+        skill_list[3],
+        skill_list[4],
+    )
+    print(data)
+    sql = "insert into My_pokemon_skill(id,skill_1,skill_2,skill_3,skill_4)values(?,?,?,?,?)"
     c.execute(sql, data)
     conn.commit()
     conn.close()

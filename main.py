@@ -17,14 +17,23 @@ db_create.create_db()
 df = pd.read_csv("ポケモンデータシート - ポケモンデータシート .csv")
 df = df.drop(["ぜんこくNo.", "名前", "英語名"], axis=1)
 pokemon_name = list(map(str, input().split()))
+pokemon_endever = [list(map(int, input().split())) for i in range(6)]
+skill_list = [list(map(str, input().split())) for i in range(6)]
 for i in pokemon_name:
     party.my_regist(i)
 pokemon_data = parameta.my_get_parameta()
-pokemon_endever = [list(map(int, input().split())) for i in range(6)]
 
 print(pokemon_data)
 for i in range(0, 6):
     parameta.my_pokemon_regsist(pokemon_data[i], pokemon_endever[i])
+    parameta.skill_set(skill_list[i])
+
+my_pokemon_list = party.get_myparty()
+print(my_pokemon_list)
+print("ポケモンを3体選んでください")
+chose_list = [list(map(int, input().split())) for i in range(3)]
+
+print()
 
 
 @app.get("/")
@@ -94,11 +103,3 @@ def my_prameta(
 
 # for i in input_name_list:
 #     df[df["名前"] == i]
-
-# エースバーン ナエトル ヒコザル ハヤシガメ アルセウス リザードン
-# 100 20 40 50 60 90
-# 100 20 40 50 60 90
-# 100 20 40 50 60 90
-# 100 20 40 50 60 90
-# 100 20 40 50 60 90
-# 100 20 40 50 60 90
