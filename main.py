@@ -31,9 +31,10 @@ for i in range(0, 6):
 my_pokemon_list = party.get_myparty()
 print(my_pokemon_list)
 print("ポケモンを3体選んでください")
-chose_list = [list(map(int, input().split())) for i in range(3)]
+chose_list = list(map(int, input().split()))
 
-print()
+my_chose_list = party.chose_my_party(chose_list)
+print("いけ", my_chose_list[0])
 
 
 @app.get("/")
